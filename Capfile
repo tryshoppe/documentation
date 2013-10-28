@@ -1,7 +1,7 @@
 set :application, "support"
 set :repository, "git://github.com/tryshoppe/documentation.git"
 set :branch, "master"
-set :deploy_to, "/opt/rubyapps/shoppe-website/docs"
+set :deploy_to, "/opt/rubyapps/shoppe-website/shared/docs"
 role :app, "tryshoppe.com"
 
 namespace :deploy do
