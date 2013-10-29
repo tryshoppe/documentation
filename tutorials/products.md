@@ -16,6 +16,7 @@ Now we need to route some requests to the controller. Head over to your `config/
 file and add the following routes.
 
 ```ruby
+::config/routes.rb
 get 'product/:permalink' => 'products#show', :as => 'product'
 root :to => 'products#index'
 ```
@@ -23,6 +24,7 @@ root :to => 'products#index'
 Let's now go and add some methods to our `ProductsController` to get some data.
 
 ```ruby
+::app/controllers/products_controller.rb
 class ProductsController < ApplicationController
 
   def index
@@ -44,6 +46,7 @@ We should now go and create some views to show this information. Firstly, let's 
 view for our product list. Go and add the following into `app/views/products/index.html.erb`.
 
 ```erb
+::app/views/products/index.html.erb
 <h2>Products</h2>
 
 <% @products.each do |category, products| %>
@@ -69,6 +72,7 @@ on the product, will take you the product's `show` action.
 We'll now add a view for the product show action.
 
 ```erb
+::app/views/products/show.html.erb
 <h2><%= @product.name %></h2>
 
 <% if @product.default_image %>

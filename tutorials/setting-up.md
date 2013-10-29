@@ -13,6 +13,7 @@ Your Rails application will be created in a directory called `widget_shop`. Open
 up and add the following to your Gemfile.
 
 ```ruby
+::Gemfile
 gem 'shoppe', '~> 0.0.0'
 ````
 

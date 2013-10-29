@@ -15,10 +15,10 @@ We recommend adding the concept of a `current_order` to your application. This m
 that you can, at any point, call `current_order` to receive an order which you can
 put items into.
 
-The following two private methods should be added to your `app/controllers/application_controller.rb`
-file.
+The following two private methods should be added to your application controller.
 
 ```ruby
+::app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
   
   private
@@ -60,6 +60,7 @@ Once you have added these methods, we can go ahead and implement the `buy` metho
 We already created a route for this earlier.
 
 ```ruby
+::app/controllers/products_controller.rb
 def buy
   @product = Shoppe::Product.find_by_permalink!(params[:permalink])
   current_order.order_items.add_item(@product, 1)
@@ -80,10 +81,11 @@ of this tutorial.
 We haven't yet done anything to display the contents of the basket so although we
 may have added items, they just disappear.
 
-Let's open up our application layout at `app/views/layouts/application.html.erb` and pop the
-following just after the opening `<body>` tag.
+Let's open up our application layout and pop the following just after the opening
+`<body>` tag.
   
 ```erb
+::app/views/layouts/application.html.erb
 <% if has_order? %>
 <p style="border:1px solid black;padding:10px;">
   You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
@@ -100,10 +102,10 @@ number of items.
 I'm sure people will forget what they put in their basket, so we should also add a view which
 allows visitors to see what's in their basket.
 
-Before we can build a page, we'll need to add a route. Add the following route to your
-`config/routes.rb` file.
+Before we can build a page, we'll need to add a route. Add the following route to your routes file.
 
 ```ruby
+::config/routes.rb
 get 'basket' => 'orders#show'
 ```
 
@@ -114,11 +116,12 @@ $ rails generate controller orders
 ```
 
 Let's make a quick partial to render a table or products. We'll probably be needing this 
-in other places as part of the checkout process so let's partial-it frmo the start.
+in other places as part of the checkout process so let's partial-it from the start.
 
 Open up `app/views/orders/_items.html.erb` and pop the following in:
 
 ```erb
+::app/views/orders/_items.html.erb
 <table width='100%' border='1'>
   <thead>
     <tr>
@@ -173,9 +176,10 @@ for the order. In some instances, you may wish to allow users to choose a delive
 while this is possible it is outside the scope of this tutorial. Our example store implements this
 so you can take a look there for an example.
 
-Now, in order to render this we need to pop a quick file into `app/views/orders/show.html.erb`.
+Now, in order to render this we need to create a view for our order controller's `show` action.
 
 ```erb
+::app/views/orders/show.html.erb
 <h2>Your basket</h2>
 <%= render 'items', :order => current_order %>
 ```
@@ -184,6 +188,7 @@ You can now browse to `/basket` to view this. Let's add a link to our basket inf
 in the application layout though.
 
 ```erb
+::app/views/layouts/application.html.erb
 <%= link_to "View basket", basket_path %>
 ```
 
@@ -192,15 +197,17 @@ in the application layout though.
 ## Emptying the basket
 
 Users may wish to remove all the items in their basket. In this case, you can just delete the
-current_order object. To do this, we'll just a create a route in `config/routes.rb` as follows:
+current_order object. To do this, we'll just a create a route as follows:
 
 ```ruby
+::config/routes.rb
 delete 'basket' => 'orders#destroy'
 ```
 
 Then we'll add a `destroy` method to our orders controller.
 
 ```ruby
+::app/controllers/orders_controller.rb
 def destroy
   current_order.destroy
   session[:order_id] = nil
@@ -211,6 +218,7 @@ end
 Finally, we need to link to this. We'll just put a link on the bottom of a basket page.
 
 ```erb
+::app/views/orders/show.html.erb
 <p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
 ```
 
