@@ -16,7 +16,7 @@ setup.
 To begin, we need to create a basic Rails application for our Store. We're going to
 call our store **Widgets Inc**.
 
-```
+```bash
 $ rails new widget_shop
 ```
 
@@ -29,14 +29,14 @@ gem "shoppe"
 
 Once added and saved, you need to reload your bundle:
 
-```
+```bash
 $ bundle
 ```
 
 You now need to run a few generators which will add various & content to your local
 Rails application. 
 
-```
+```bash
 $ rails generate shoppe:setup
 $ rails generate nifty:attachments:migration
 $ rails generate nifty:key_value_store:migration
@@ -51,7 +51,7 @@ is used to store key/values for certain Shoppe models.
 Next up is adding the appropriate tables to your database and loading the initial
 data needed for Shoppe.
 
-```
+```bash
 $ rake db:migrate shoppe:setup
 ```
 
@@ -59,7 +59,7 @@ Shoppe ships with a set of data which can be very useful while developing. It in
 a number of products, delivery services & tax rates. We will go ahead and load this
 data into our datbase.
 
-```
+```bash
 $ rake shoppe:seed
 ```
 
@@ -80,7 +80,95 @@ $ rails server
 ```
 
 Once the server is up and running, go ahead and navigate to http://localhost:3000/shoppe.
-You will be asked for a username & password, enter **admin@example.com** and **password**.
+You will be asked for a username & password, enter `admin@example.com` and `password`.
 You can change these from the Users page within here however for development we can 
 leave them as-is.
 
+## Displaying your products
+
+The first thing we need to do is create a controller which will be used to display
+our products to our customers.
+
+```bash
+$ rails generate controller products
+```
+
+Now we need to route some requests to the controller. Head over to your `config/routes.rb`
+file and add the following routes.
+
+```ruby
+get 'product/:permalink' => 'products#show', :as => 'product'
+root :to => 'products#index'
+```
+
+Let's now go and add some methods to our `ProductsController` to get some data.
+
+```ruby
+class ProductsController < ApplicationController
+
+  def index
+    @products = Shoppe::Product.root.ordered.includes(:product_category, :variants, :default_image).group_by(&:product_category)
+  end
+
+  def show
+    @product = Shoppe::Product.find_by_permalink(params[:permalink])
+  end
+  
+end
+```
+
+In the `index` method we are getting all our products and grouping them by their category.
+In the `show` method we are just getting a single product based on its permalink.
+
+We should now go and create some views to show this information. Firstly, let's create a
+view for our product list. Go and add the following into `app/views/products/index.html.erb`.
+
+```html
+<h2>Products</h2>
+
+<% @products.each do |category, products| %>
+  <h3><%= category.name %></h3>
+  <ul>
+    <% products.each do |product| %>
+    <li>
+      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
+      <p><%= product.short_description %></p>
+      <p><b>Price:</b> <%= number_to_currency product.price %></p>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+```
+
+If you now take a look at http://localhost:3000 (when your server is running), you'll see a
+list of products along with a short description and a price for the product. Clicking 
+on the product, will take you the product's `show` action.
+
+![Image](http://s.adamcooke.io/cZDqP.png)
+
+We'll now add a view for the product show action.
+
+```html
+<h2><%= @product.name %></h2>
+
+<% if @product.default_image %>
+  <%= image_tag @product.default_image.path, :width => '200px', :style => "float:right" %>
+<% end %>
+
+<p><%= @product.short_description %></p>
+<p>
+  <b><%= number_to_currency @product.price %></b>
+  <%= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
+</p>
+
+<hr>
+<%= simple_format @product.description %>
+<hr>
+
+<p><%= link_to "Back to list", root_path %></p>
+```
+
+If you click on one of the products in the list, you should now see some information 
+about the product along with it's image and a link for adding it to your basket.
+
+![Image](http://s.adamcooke.io/4nfIL.png)
