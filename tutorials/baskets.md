@@ -186,3 +186,36 @@ in the application layout though.
 ```
 
 ![Image](http://s.adamcooke.io/8l5ta.png)
+
+## Emptying the basket
+
+Users may wish to remove all the items in their basket. In this case, you can just delete the
+current_order object. To do this, we'll just a create a route in `config/routes.rb` as follows:
+
+```ruby
+delete 'basket' => 'orders#destroy'
+```
+
+Then we'll add a `destroy` method to our orders controller.
+
+```ruby
+def destroy
+  current_order.destroy
+  session[:order_id] = nil
+  redirect_to root_path, :notice => "Basket emptied successfully."
+end
+```
+
+Finally, we need to link to this. We'll just put a link on the bottom of a basket page.
+
+```erb
+<p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
+```
+
+
+## Further techniques
+
+* Allow customers to change the quantity of items in their basket
+* Allow customers to remove individual items from the basket
+* Allow customers to change their delivery service
+* Catch errors when a product is not in stock and added to a user's basket

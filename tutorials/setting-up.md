@@ -1,11 +1,8 @@
-# Getting started with Shoppe
+# Setting up in a new application
 
-In this tutorial, we're going to build a new Shoppe store from scratch into a brand new 
-Rails application. We will start at the every beginning and guide you through all the
-steps needed to build a simple store with a basket and checkout process.
-
-We're assuming that you have Rails, Ruby, RubyGems & Bunlder installed at their latest
-versions. This guide was produced using Rails 4.0.0 & Ruby 2.0.
+In this tutorial, we're going to set up Shoppe from scratch into a brand new 
+Rails application. We're assuming that you have Rails, Ruby, RubyGems & Bunlder
+installed at their latest versions. This guide was produced using Rails 4.0.0 & Ruby 2.0.
 
 During this tutorial, we will execute commands such as `rails` or `rake`. You may find
 you need to prefix these commands with `bundle exec` depending on your local system
