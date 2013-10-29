@@ -1,12 +1,6 @@
+{{partial:getting_started_series}}
+
 # Setting up in a new application
-
-In this tutorial, we're going to set up Shoppe from scratch into a brand new 
-Rails application. We're assuming that you have Rails, Ruby, RubyGems & Bunlder
-installed at their latest versions. This guide was produced using Rails 4.0.0 & Ruby 2.0.
-
-During this tutorial, we will execute commands such as `rails` or `rake`. You may find
-you need to prefix these commands with `bundle exec` depending on your local system
-setup.
 
 To begin, we need to create a basic Rails application for our Store. We're going to
 call our store **Widgets Inc**.
@@ -19,7 +13,7 @@ Your Rails application will be created in a directory called `widget_shop`. Open
 up and add the following to your Gemfile.
 
 ```ruby
-gem "shoppe"
+gem 'shoppe', '~> 0.0.0'
 ````
 
 Once added and saved, you need to reload your bundle:

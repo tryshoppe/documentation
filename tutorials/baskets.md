@@ -1,3 +1,5 @@
+{{partial:getting_started_series}}
+
 # Working with Shoppe baskets
 
 Shoppe has the concept of orders - an order is a collection of products along with

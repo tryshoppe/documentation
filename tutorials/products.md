@@ -1,3 +1,5 @@
+{{partial:getting_started_series}}
+
 # Building your product catalog
 
 One of the first things every shop needs is a way to display its catalog to visitors.

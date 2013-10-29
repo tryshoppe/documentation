@@ -1,3 +1,5 @@
+{{partial:getting_started_series}}
+
 # Checking out
 
 This tutorial will guide you through setting up your application to allow
