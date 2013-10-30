@@ -96,3 +96,10 @@ If you click on one of the products in the list, you should now see some informa
 about the product along with it's image and a link for adding it to your basket.
 
 ![Image](http://s.adamcooke.io/4nfIL.png)
+
+## Further techniques
+
+* Display products based on their 'featured' boolean
+* Display products within their categories
+* Display stock information along with orders
+

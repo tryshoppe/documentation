@@ -228,4 +228,5 @@ Finally, we need to link to this. We'll just put a link on the bottom of a baske
 * Allow customers to change the quantity of items in their basket
 * Allow customers to remove individual items from the basket
 * Allow customers to change their delivery service
+* Allow customers to view & purchase products with multiple variants
 * Catch errors when a product is not in stock and added to a user's basket
