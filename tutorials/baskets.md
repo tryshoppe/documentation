@@ -84,7 +84,7 @@ may have added items, they just disappear.
 Let's open up our application layout and pop the following just after the opening
 `<body>` tag.
   
-```erb
+```rhtml
 ::app/views/layouts/application.html.erb
 <% if has_order? %>
 <p style="border:1px solid black;padding:10px;">
@@ -120,7 +120,7 @@ in other places as part of the checkout process so let's partial-it from the sta
 
 Open up `app/views/orders/_items.html.erb` and pop the following in:
 
-```erb
+```rhtml
 ::app/views/orders/_items.html.erb
 <table width='100%' border='1'>
   <thead>
@@ -178,7 +178,7 @@ so you can take a look there for an example.
 
 Now, in order to render this we need to create a view for our order controller's `show` action.
 
-```erb
+```rhtml
 ::app/views/orders/show.html.erb
 <h2>Your basket</h2>
 <%= render 'items', :order => current_order %>
@@ -187,7 +187,7 @@ Now, in order to render this we need to create a view for our order controller's
 You can now browse to `/basket` to view this. Let's add a link to our basket information section
 in the application layout though.
 
-```erb
+```rhtml
 ::app/views/layouts/application.html.erb
 <%= link_to "View basket", basket_path %>
 ```
@@ -217,7 +217,7 @@ end
 
 Finally, we need to link to this. We'll just put a link on the bottom of a basket page.
 
-```erb
+```rhtml
 ::app/views/orders/show.html.erb
 <p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
 ```

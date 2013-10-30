@@ -45,7 +45,7 @@ In the `show` method we are just getting a single product based on its permalink
 We should now go and create some views to show this information. Firstly, let's create a
 view for our product list. Go and add the following into `app/views/products/index.html.erb`.
 
-```erb
+```rhtml
 ::app/views/products/index.html.erb
 <h2>Products</h2>
 
@@ -71,7 +71,7 @@ on the product, will take you the product's `show` action.
 
 We'll now add a view for the product show action.
 
-```erb
+```rhtml
 ::app/views/products/show.html.erb
 <h2><%= @product.name %></h2>
 
