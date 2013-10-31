@@ -18,3 +18,7 @@ setup.
 * [Displaying your product catalog](products)
 * [Customer baskets](baskets)
 * [Checking out](checking-out)
+
+The final appication built in this tutorial is [available on GitHub](https://github.com/tryshoppe/getting-started-tutorial).
+If you get stuck or need further information, this would be an excellent place to
+download a working copy of the application.
