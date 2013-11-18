@@ -61,7 +61,7 @@ working as we would expect.
 ```bash
 $ rails server
 # => Booting WEBrick
-# => Rails 4.0.0 application starting in development on http://0.0.0.0:3000
+# => Rails 4.0.1 application starting in development on http://0.0.0.0:3000
 # => Run `rails server -h` for more startup options
 # => Ctrl-C to shutdown server
 # [2013-10-29 14:35:09] INFO  WEBrick 1.3.1
