@@ -14,7 +14,7 @@ up and add the following to your Gemfile.
 
 ```ruby
 ::Gemfile
-gem 'shoppe', '~> 0.0.0'
+gem 'shoppe'
 ````
 
 Once added and saved, you need to reload your bundle:
