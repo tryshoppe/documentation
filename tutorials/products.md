@@ -4,7 +4,7 @@
 
 One of the first things every shop needs is a way to display its catalog to visitors.
 
-To being we will go ahead and create a controller which will be used to display our
+To begin, we will go ahead and create a controller which will be used to display our
 products to our customers. All product information is stored and managed by Shoppe through
 its admin interface.
 
