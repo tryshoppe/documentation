@@ -76,6 +76,16 @@ Of course, you can do different things with this - you may wish to do this with 
 want to allow users to add more than one item at a time. Those things are outside of the scope
 of this tutorial.
 
+Don't forget to add the correct route. Head over to your `config/routes.rb`
+file and add the following routes.
+
+```ruby
+::config/routes.rb
+post 'product/:permalink' => 'products#buy'
+```
+
+This mean that you can post to `buy` method
+
 ## What's in the basket?
 
 We haven't yet done anything to display the contents of the basket so although we
