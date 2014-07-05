@@ -31,7 +31,7 @@ Let's go ahead and create a link so users can get to our newly routed checkout p
 Open up your application layout and add a "Checkout" link next to view basket.
 
 ```rhtml
-::app/views/layouts/application.html.haml
+::app/views/layouts/application.html.erb
 <%= link_to "Checkout", checkout_path %>
 ```
 
@@ -62,8 +62,9 @@ a form for visitor to enter their details.
     <dt><%= f.label :billing_address1, 'Address' %></dt>
     <dd><%= f.text_field :billing_address1 %></dd>
     <dd><%= f.text_field :billing_address2 %></dd>
-    <dd><%= f.text_field :billing_address3 %></dd>    
+    <dd><%= f.text_field :billing_address3 %></dd>
     <dd><%= f.text_field :billing_address4 %></dd>
+    <dt><%= f.label :billing_postcode, 'Post code' %></dt>
     <dd><%= f.text_field :billing_postcode %></dd>
     <dd><%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %></dd>
     
