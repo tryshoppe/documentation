@@ -1,8 +1,11 @@
 set :application, "support"
 set :repository, "git://github.com/tryshoppe/documentation.git"
 set :branch, "master"
-set :deploy_to, "/opt/rubyapps/shoppe-website/shared/docs"
-role :app, "tryshoppe.com"
+set :deploy_to, "/app/docs"
+set :ssh_options, {:port => 32032}
+set :user, 'vdt'
+role :app, "185.44.252.32"
+
 
 namespace :deploy do
   desc 'Deploy the latest revision of the application'
@@ -17,7 +20,6 @@ namespace :deploy do
 
   desc 'Setup the repository on the remote server for the first time'
   task :setup, :roles => [:app, :storage] do
-    run "rm -rf #{deploy_to}"
     run "git clone -n #{fetch(:repository)} #{deploy_to} --branch #{fetch(:branch)}"
     run "cd #{deploy_to} && git branch rollback && git checkout -b deploy && git branch -d #{fetch(:branch)}"
     update_code
