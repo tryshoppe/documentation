@@ -2,6 +2,8 @@
 
 # Setting up in a new application
 
+**[View screencast instead?](https://www.youtube.com/watch?v=p2Fvw35ezds)** - watch this quick screencast to see how to install Shoppe into a new Rails application.
+
 To begin, we need to create a basic Rails application for our Store. We're going to
 call our store **Widgets Inc**.
 
