@@ -16,7 +16,7 @@ up and add the following to your Gemfile.
 
 ```ruby
 ::Gemfile
-gem 'shoppe', '~> 0.0.0'
+gem 'shoppe', '~> 1.0'
 ````
 
 Once added and saved, you need to reload your bundle:
@@ -25,7 +25,7 @@ Once added and saved, you need to reload your bundle:
 $ bundle
 ```
 
-You now need to run a few generators which will add various & content to your local
+You now need to run a few generators which will add various content to your local
 Rails application. 
 
 ```bash
