@@ -96,7 +96,7 @@ Let's open up our application layout and pop the following just after the openin
   
 ```rhtml
 ::app/views/layouts/application.html.erb
-<% if has_order? %>
+<% if current_order %>
 <p style="border:1px solid black;padding:10px;">
   You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
   <%= number_to_currency current_order.total_before_tax %>.
@@ -200,6 +200,7 @@ in the application layout though.
 ```rhtml
 ::app/views/layouts/application.html.erb
 <%= link_to "View basket", basket_path %>
+<%= flash[:notice] %>
 ```
 
 ![Image](http://s.adamcooke.io/8l5ta.png)
