@@ -44,7 +44,7 @@ Next up is adding the appropriate tables to your database and loading the initia
 data needed for Shoppe.
 
 ```bash
-$ rake db:migrate shoppe:setup
+$ rake db:migrate
 ```
 
 Shoppe ships with a set of data which can be very useful while developing. It includes
