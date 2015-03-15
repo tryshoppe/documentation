@@ -36,12 +36,13 @@ $ rails generate nifty:key_value_store:migration
 
 The first of these will add a route to your `config/routes.rb` file specifying that
 your Shoppe admin interface will be mounted at `/shoppe`. The second two will create
-database migrations used by two dependencies of Shoppe. [Nifty Attachments](https://github.com/niftyware/attachments)
-is used to store images in your database and the [Nifty key value store](https://github.com/niftyware/key-value-store)
+database migrations used by two dependencies of Shoppe. [Nifty Attachments](https://github.com/atech/nifty-attachments)
+is used to store images in your database and the [Nifty Key Value Store](https://github.com/atech/nifty-key-value-store)
 is used to store key/values for certain Shoppe models. 
 
 Next up is adding the appropriate tables to your database and loading the initial
-data needed for Shoppe.
+data needed for Shoppe. You may need to migrate the database twice for it to 
+setup the tables for Shoppe.
 
 ```bash
 $ rake db:migrate shoppe:setup
@@ -63,11 +64,11 @@ working as we would expect.
 ```bash
 $ rails server
 # => Booting WEBrick
-# => Rails 4.0.1 application starting in development on http://0.0.0.0:3000
+# => Rails 4.2.0 application starting in development on http://0.0.0.0:3000
 # => Run `rails server -h` for more startup options
 # => Ctrl-C to shutdown server
 # [2013-10-29 14:35:09] INFO  WEBrick 1.3.1
-# [2013-10-29 14:35:09] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.0]
+# [2013-10-29 14:35:09] INFO  ruby 2.1.5 (2014-11-13) [x86_64-darwin14.0]
 # [2013-10-29 14:35:09] INFO  WEBrick::HTTPServer#start: pid=5213 port=3000
 ```
 

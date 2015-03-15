@@ -17,9 +17,9 @@ file and add the following routes.
 
 ```ruby
 ::config/routes.rb
-get 'product/:permalink' => 'products#show', :as => 'product'
-post 'product/:permalink' => 'products#buy', :as => 'buy'
-root :to => 'products#index'
+get "product/:permalink", to: "products#show", as: "product"
+post "product/:permalink", to: "products#buy", as: "buy"
+root to: "products#index"
 ```
 
 Let's now go and add some methods to our `ProductsController` to get some data.

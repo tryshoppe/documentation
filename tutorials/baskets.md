@@ -76,12 +76,12 @@ Of course, you can do different things with this - you may wish to do this with 
 want to allow users to add more than one item at a time. Those things are outside of the scope
 of this tutorial.
 
-Don't forget to add the correct route. Head over to your `config/routes.rb`
+Don't forget to add the correct route if you haven't already. Head over to your `config/routes.rb`
 file and add the following routes.
 
 ```ruby
 ::config/routes.rb
-post 'product/:permalink' => 'products#buy'
+post "product/:permalink", to: "products#buy"
 ```
 
 This mean that you can post to `buy` method
@@ -116,7 +116,7 @@ Before we can build a page, we'll need to add a route. Add the following route t
 
 ```ruby
 ::config/routes.rb
-get 'basket' => 'orders#show'
+get "basket", to: "orders#show"
 ```
 
 We'll also need a controller because it doesn't really fit into our products controller.
@@ -212,7 +212,7 @@ current_order object. To do this, we'll just a create a route as follows:
 
 ```ruby
 ::config/routes.rb
-delete 'basket' => 'orders#destroy'
+delete "basket", to: "orders#destroy"
 ```
 
 Then we'll add a `destroy` method to our orders controller.

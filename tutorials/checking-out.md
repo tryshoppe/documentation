@@ -19,9 +19,9 @@ We will create three routes for these steps:
 
 ```ruby
 ::config/routes.rb
-match 'checkout' => 'orders#checkout', :as => 'checkout', :via => [:get, :patch]
-match 'checkout/pay' => 'orders#payment', :as => 'checkout_payment', :via => [:get, :post]
-match 'checkout/confirm' => 'orders#confirmation', :as => 'checkout_confirmation', :via => [:get, :post]
+match "checkout", to: "orders#checkout", as: "checkout", via: [:get, :patch]
+match "checkout/pay", to: "orders#payment", as: "checkout_payment", via: [:get, :post]
+match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:get, :post]
 ```
 
 All our checkout actions will take place within the orders controller which 
