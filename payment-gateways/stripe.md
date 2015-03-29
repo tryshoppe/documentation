@@ -107,4 +107,4 @@ payment automatically.
 
 Your Stripe integration is now complete!
 
-More information about the `shoppe-stripe` order can be found on [GitHub](https://github.com/tryshoppe/shoppe-stripe).
+More information about the `shoppe-stripe` module can be found on [GitHub](https://github.com/tryshoppe/shoppe-stripe).
