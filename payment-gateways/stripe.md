@@ -1,6 +1,6 @@
-# Adding support for a payment gateway
+{{partial:payment_gateways}}
 
-## Stripe
+# Stripe
 
 Shoppe has a module for interfacing with Stripe. This small tutorial will
 run through the steps in order to add it to your Rails application.
