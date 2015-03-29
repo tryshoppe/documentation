@@ -1,5 +1,3 @@
-{{partial:payment_gateways}}
-
 # PayPal
 
 Shoppe has a module for taking payments with PayPal. This small tutorial

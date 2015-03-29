@@ -1,5 +1,3 @@
-{{partial:payment_gateways}}
-
 # Stripe
 
 Shoppe has a module for interfacing with Stripe. This small tutorial will
