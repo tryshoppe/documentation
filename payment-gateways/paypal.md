@@ -45,10 +45,23 @@ In your `routes.rb` file, add the path for the link we just created.
 get "checkout/paypal", to: "orders#paypal"
 ```
 
-And add the controller method to the orders controller. The `redirect_to_paypal` method 
-requires to paramters, a success & cancel URL. These are for PayPal to redirect to
-when the payment has been approved or cancelled. Notice I'm using `_url` instead of
-`_path`. This shows the full URL. e.g. http://localhost:3000/checkout/paypal?success=true
+Before we can add the controller method for PayPal, the PayPal setup method
+needs to be initialised for the specific controller methods. Add the 
+following code to the top of your `orders_controller.rb`. The
+`Shoppe::Paypal.setup_paypal` method needs to be ran / initialised before
+anything that accesses the PayPal API because it sets the API keys
+that were entered on the settings page earlier.
+
+```ruby
+::app/controllers/orders_controller.rb
+before_filter(only: [:paypal, :payment]) { Shoppe::Paypal.setup_paypal }
+```
+
+Now we can add the controller method to the orders controller. The
+`redirect_to_paypal` method requires to paramters, a success & cancel URL.
+These are for PayPal to redirect to when the payment has been approved or
+cancelled. Notice I'm using `_url` instead of `_path`. This shows the full
+URL. e.g. http://localhost:3000/checkout/paypal?success=true
 
 ```ruby
 ::app/controllers/orders_controller.rb
