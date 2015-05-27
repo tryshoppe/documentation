@@ -29,7 +29,7 @@ Let's now go and add some methods to our `ProductsController` to get some data.
 class ProductsController < ApplicationController
 
   def index
-    @products = Shoppe::Product.root.ordered.includes(:product_category, :variants)
+    @products = Shoppe::Product.root.ordered.includes(:product_categories, :variants)
     @products = @products.group_by(&:product_category)
   end
   
