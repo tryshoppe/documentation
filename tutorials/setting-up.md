@@ -54,6 +54,7 @@ data into our datbase.
 
 ```bash
 $ rake shoppe:seed
+$ rake shoppe:create_default_user
 ```
 
 ## Starting your application
