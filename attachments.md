@@ -31,3 +31,15 @@ CarrierWave.configure do |cfg|
   cfg.enable_processing = !Rails.env.test?
 end
 ```
+
+## Converting nifty-attachments to Shoppe Attachments
+
+Shoppe v1.0.9 moved from `nifty-attachments` to a custom Attachments system.
+Once installing the latest version and running the migrations, you'll notice 
+that none of the old attachments have been moved over. In order to run this, you'll
+need to add the `nifty-attachments` gem to your Gemfile. It can then be
+removed afterwards. Start the conversion by running the following rake task:
+
+```bash
+$ rake shoppe:attachments
+```
