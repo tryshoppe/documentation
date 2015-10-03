@@ -30,7 +30,7 @@ PayPal to login & approve a payment. Once approved, they will be redirected back
 Rails app and can complete the order.
 
 Add a link to the `payment.html.erb` file if you've been following the other tutorials.
-PayPal recommends you use their [buttons](https://www.paypal.com/us/webapps/mpp/logos-buttons) but 
+PayPal recommends you use their [buttons](https://www.paypal.com/us/webapps/mpp/logos-buttons) but
 for this tutorial I'm just using a text link.
 
 ```rhtml
@@ -46,7 +46,7 @@ get "checkout/paypal", to: "orders#paypal"
 ```
 
 Before we can add the controller method for PayPal, the PayPal setup method
-needs to be initialised for the specific controller methods. Add the 
+needs to be initialised for the specific controller methods. Add the
 following code to the top of your `orders_controller.rb`. The
 `Shoppe::Paypal.setup_paypal` method needs to be ran / initialised before
 anything that accesses the PayPal API because it sets the API keys
@@ -58,7 +58,7 @@ before_filter(only: [:paypal, :payment]) { Shoppe::Paypal.setup_paypal }
 ```
 
 Now we can add the controller method to the orders controller. The
-`redirect_to_paypal` method requires to paramters, a success & cancel URL.
+`redirect_to_paypal` method requires two paramters, a success & cancel URL.
 These are for PayPal to redirect to when the payment has been approved or
 cancelled. Notice I'm using `_url` instead of `_path`. This shows the full
 URL. e.g. http://localhost:3000/checkout/paypal?success=true
@@ -73,7 +73,7 @@ end
 ```
 
 Clicking the "Pay with PayPal" button will redirect you to PayPal with the correct
-price. Once confirmed, you will be redirected to the success URL we set earlier. In 
+price. Once confirmed, you will be redirected to the success URL we set earlier. In
 this tutorial it is `http://localhost:3000/checkout/paypal?success=true`. When redirected
 there will be 3 extra parameters added to the URL. These are as follows:
 
@@ -81,7 +81,7 @@ there will be 3 extra parameters added to the URL. These are as follows:
 + `token`
 + `PayerID`
 
-These all need to be stored alongside the order and a payment should be created. Back in 
+These all need to be stored alongside the order and a payment should be created. Back in
 the orders controller, add the following code to the payment method
 
 ```ruby

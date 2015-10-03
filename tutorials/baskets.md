@@ -20,9 +20,9 @@ The following two private methods should be added to your application controller
 ```ruby
 ::app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-  
+
   private
-  
+
   def current_order
     @current_order ||= begin
       if has_order?
@@ -34,20 +34,20 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
+
   def has_order?
     !!(
       session[:order_id] &&
       @current_order = Shoppe::Order.includes(:order_items => :ordered_item).find_by_id(session[:order_id])
     )
   end
-  
+
   helper_method :current_order, :has_order?
-  
+
 end
 ```
 
-The `current_order` method will always return an instance of `Shoppe::Order`. The first time this 
+The `current_order` method will always return an instance of `Shoppe::Order`. The first time this
 is called for a visitor, an order will be created and its ID stored in a session. Any subsequent
 calls within the same session will simply return the created order.
 
@@ -62,7 +62,7 @@ We already created a route for this earlier.
 ```ruby
 ::app/controllers/products_controller.rb
 def buy
-  @product = Shoppe::Product.find_by_permalink!(params[:permalink])
+  @product = Shoppe::Product.root.find_by_permalink!(params[:permalink])
   current_order.order_items.add_item(@product, 1)
   redirect_to product_path(@product.permalink), :notice => "Product has been added successfuly!"
 end
@@ -93,7 +93,7 @@ may have added items, they just disappear.
 
 Let's open up our application layout and pop the following just after the opening
 `<body>` tag.
-  
+
 ```rhtml
 ::app/views/layouts/application.html.erb
 <% if current_order %>
@@ -104,7 +104,7 @@ Let's open up our application layout and pop the following just after the openin
 <% end %>
 ```
 
-This will insert a box at the top of each page with your current basket price and 
+This will insert a box at the top of each page with your current basket price and
 number of items.
 
 ![Image](http://s.adamcooke.io/FazPV.png)
@@ -125,7 +125,7 @@ We'll also need a controller because it doesn't really fit into our products con
 $ rails generate controller orders
 ```
 
-Let's make a quick partial to render a table or products. We'll probably be needing this 
+Let's make a quick partial to render a table or products. We'll probably be needing this
 in other places as part of the checkout process so let's partial-it from the start.
 
 Open up `app/views/orders/_items.html.erb` and pop the following in:
@@ -152,7 +152,7 @@ Open up `app/views/orders/_items.html.erb` and pop the following in:
       <td><%= number_to_currency item.total %></td>
     </tr>
     <% end %>
-    
+
     <% if order.delivery_service %>
     <tr>
       <td></td>
@@ -162,7 +162,7 @@ Open up `app/views/orders/_items.html.erb` and pop the following in:
       <td><%= number_to_currency order.delivery_price + order.delivery_tax_amount %></td>
     </tr>
     <% end %>
-    
+
   </tbody>
   <tfoot>
     <tr>
