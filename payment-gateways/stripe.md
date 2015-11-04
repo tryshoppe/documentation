@@ -19,7 +19,7 @@ bundle install
 Edit your `application.js` file and add the following
 
 ```
-::app/assets/application.js
+::app/assets/javascripts/application.js
 //= require shoppe/stripe/form_handler
 ```
 
