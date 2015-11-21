@@ -30,7 +30,6 @@ Rails application.
 
 ```bash
 $ rails generate shoppe:setup
-$ rails generate nifty:attachments:migration
 $ rails generate nifty:key_value_store:migration
 ```
 
