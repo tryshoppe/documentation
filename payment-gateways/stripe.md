@@ -42,8 +42,8 @@ be sent to stripe with the data-stripe attribute. It should include one of the f
 values. The address information is only needed if you want to perform extra fraud checks.
 
 + number (required)
-+ exp_month (required)
-+ exp_year (required)
++ exp-month (required)
++ exp-year (required)
 + cvc
 + name
 + address_line1
@@ -72,9 +72,9 @@ prevents the form from sending the non-encrypted details to your application.
     <dt><%= label_tag 'card_number' %></dt>
     <dd><%= text_field_tag 'card_number', nil, name: nil, "data-stripe" => "number" %></dd>
     <dt><%= label_tag 'expiry_month' %></dt>
-    <dd><%= text_field_tag 'expiry_month', nil, name: nil, "data-stripe" => "exp_month" %></dd>
+    <dd><%= text_field_tag 'expiry_month', nil, name: nil, "data-stripe" => "exp-month" %></dd>
     <dt><%= label_tag 'expiry_year' %></dt>
-    <dd><%= text_field_tag 'expiry_year', nil, name: nil, "data-stripe" => "exp_year" %></dd>
+    <dd><%= text_field_tag 'expiry_year', nil, name: nil, "data-stripe" => "exp-year" %></dd>
     <dt><%= label_tag 'security_code' %></dt>
     <dd><%= text_field_tag 'security_code', nil, name: nil, "data-stripe" => "cvc" %></dd>
     <dd><%= submit_tag "Continue" %></dd>
