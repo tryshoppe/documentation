@@ -47,7 +47,7 @@ end
 ```
 
 On our checkout page, we want to display the contents of the basket as well as providing
-a form for visitor to enter their details.
+a form for visitors to enter their details.
 
 ```rhtml
 ::app/views/orders/checkout.html.erb
