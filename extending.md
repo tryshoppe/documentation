@@ -124,6 +124,6 @@ Many thanks,
 <%= Shoppe.settings.email_address %>
 ```
 
-The main part of the Gem has neen completed. All you need to do now is push the gem to
+The main part of the Gem has been completed. All you need to do now is push the gem to
 Rubygems (if you want) and add it to the Gemfile of your project and that's it! When a new
 order has been received, staff will receive an email saying so.
